@@ -1,6 +1,6 @@
 FROM mcr.microsoft.com/dotnet/sdk:6.0 AS build
 WORKDIR /src
-COPY ["RazorClassLibrary1/RazorClassLibrary1.csproj", "RazorClassLibrary1/"]
+COPY ["Shared/Shared.csproj", "Shared/"]
 COPY ["backend/backend.csproj", "backend/"]
 
 RUN dotnet restore "backend/backend.csproj"

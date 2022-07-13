@@ -1,30 +1,16 @@
 {
   "version": 2,
-  "dgSpecHash": "YO6yIQqQ7gmAs6z+BBwvfyt/53zR1nTHccnJnVZnUBEH4dqhHGW5cshZCyczMwLamyt5aAXbs03TZZ1dsWHV3w==",
+  "dgSpecHash": "A9YzroDEWa/xzjNJM9YMnY24DsbYV+zEfiWKpAruKgBXBP3AP0U3h/CQnYVBiuU5LgbEYqvtGLMv/wY0Xzxzjw==",
   "success": true,
-  "projectFilePath": "C:\\Tarun\\poc\\sampleMicroserviceApp\\mslearn-dotnetmicroservices\\backend\\backend.csproj",
+  "projectFilePath": "C:\\Tarun\\poc\\sampleMicroserviceApp\\azdSampleMicroservice\\backend\\backend.csproj",
   "expectedPackageFiles": [
-    "C:\\Users\\v-tjain\\.nuget\\packages\\microsoft.aspnetcore.authorization\\6.0.6\\microsoft.aspnetcore.authorization.6.0.6.nupkg.sha512",
-    "C:\\Users\\v-tjain\\.nuget\\packages\\microsoft.aspnetcore.components\\6.0.6\\microsoft.aspnetcore.components.6.0.6.nupkg.sha512",
-    "C:\\Users\\v-tjain\\.nuget\\packages\\microsoft.aspnetcore.components.analyzers\\6.0.6\\microsoft.aspnetcore.components.analyzers.6.0.6.nupkg.sha512",
-    "C:\\Users\\v-tjain\\.nuget\\packages\\microsoft.aspnetcore.components.forms\\6.0.6\\microsoft.aspnetcore.components.forms.6.0.6.nupkg.sha512",
-    "C:\\Users\\v-tjain\\.nuget\\packages\\microsoft.aspnetcore.components.web\\6.0.6\\microsoft.aspnetcore.components.web.6.0.6.nupkg.sha512",
-    "C:\\Users\\v-tjain\\.nuget\\packages\\microsoft.aspnetcore.metadata\\6.0.6\\microsoft.aspnetcore.metadata.6.0.6.nupkg.sha512",
     "C:\\Users\\v-tjain\\.nuget\\packages\\microsoft.extensions.apidescription.server\\3.0.0\\microsoft.extensions.apidescription.server.3.0.0.nupkg.sha512",
-    "C:\\Users\\v-tjain\\.nuget\\packages\\microsoft.extensions.dependencyinjection\\6.0.0\\microsoft.extensions.dependencyinjection.6.0.0.nupkg.sha512",
-    "C:\\Users\\v-tjain\\.nuget\\packages\\microsoft.extensions.dependencyinjection.abstractions\\6.0.0\\microsoft.extensions.dependencyinjection.abstractions.6.0.0.nupkg.sha512",
-    "C:\\Users\\v-tjain\\.nuget\\packages\\microsoft.extensions.logging.abstractions\\6.0.1\\microsoft.extensions.logging.abstractions.6.0.1.nupkg.sha512",
-    "C:\\Users\\v-tjain\\.nuget\\packages\\microsoft.extensions.options\\6.0.0\\microsoft.extensions.options.6.0.0.nupkg.sha512",
-    "C:\\Users\\v-tjain\\.nuget\\packages\\microsoft.extensions.primitives\\6.0.0\\microsoft.extensions.primitives.6.0.0.nupkg.sha512",
-    "C:\\Users\\v-tjain\\.nuget\\packages\\microsoft.jsinterop\\6.0.6\\microsoft.jsinterop.6.0.6.nupkg.sha512",
     "C:\\Users\\v-tjain\\.nuget\\packages\\microsoft.openapi\\1.2.3\\microsoft.openapi.1.2.3.nupkg.sha512",
     "C:\\Users\\v-tjain\\.nuget\\packages\\microsoft.visualstudio.azure.containers.tools.targets\\1.11.1\\microsoft.visualstudio.azure.containers.tools.targets.1.11.1.nupkg.sha512",
     "C:\\Users\\v-tjain\\.nuget\\packages\\swashbuckle.aspnetcore\\6.2.3\\swashbuckle.aspnetcore.6.2.3.nupkg.sha512",
     "C:\\Users\\v-tjain\\.nuget\\packages\\swashbuckle.aspnetcore.swagger\\6.2.3\\swashbuckle.aspnetcore.swagger.6.2.3.nupkg.sha512",
     "C:\\Users\\v-tjain\\.nuget\\packages\\swashbuckle.aspnetcore.swaggergen\\6.2.3\\swashbuckle.aspnetcore.swaggergen.6.2.3.nupkg.sha512",
-    "C:\\Users\\v-tjain\\.nuget\\packages\\swashbuckle.aspnetcore.swaggerui\\6.2.3\\swashbuckle.aspnetcore.swaggerui.6.2.3.nupkg.sha512",
-    "C:\\Users\\v-tjain\\.nuget\\packages\\system.io.pipelines\\6.0.3\\system.io.pipelines.6.0.3.nupkg.sha512",
-    "C:\\Users\\v-tjain\\.nuget\\packages\\system.runtime.compilerservices.unsafe\\6.0.0\\system.runtime.compilerservices.unsafe.6.0.0.nupkg.sha512"
+    "C:\\Users\\v-tjain\\.nuget\\packages\\swashbuckle.aspnetcore.swaggerui\\6.2.3\\swashbuckle.aspnetcore.swaggerui.6.2.3.nupkg.sha512"
   ],
   "logs": []
 }

@@ -1,5 +1,5 @@
 using System;
-using RazorClassLibrary1;
+using Shared;
 namespace backend
 {
     public class PizzaInfo

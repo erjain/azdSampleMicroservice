@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace RazorClassLibrary1
+namespace Shared
 {
     public class SampleClass
     {
