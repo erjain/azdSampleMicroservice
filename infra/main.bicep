@@ -48,4 +48,3 @@ output AZURE_CONTAINER_REGISTRY_ENDPOINT string = resources.outputs.AZURE_CONTAI
 output AZURE_CONTAINER_REGISTRY_NAME string = resources.outputs.AZURE_CONTAINER_REGISTRY_NAME
 output FRONTEND_WEB_BASE_URL string = resources.outputs.WEB_URI
 output BACKEND_API_BASE_URL string = resources.outputs.API_URI
-output REACT_APP_APPINSIGHTS_INSTRUMENTATIONKEY string = resources.outputs.APPINSIGHTS_INSTRUMENTATIONKEY
