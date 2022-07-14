@@ -26,6 +26,10 @@ resource keyVault 'Microsoft.KeyVault/vaults@2019-09-01' existing = {
   name: 'keyvault${resourceToken}'
 }
 
+resource api 'Microsoft.App/containerApps@2022-03-01' existing = {
+  name: 'backend-api-${resourceToken}'
+}
+
 
 param containerAppsEnvironmentId string
 param containerAppsEnvironmentDomain string
@@ -45,7 +49,7 @@ resource web 'Microsoft.App/containerApps@2022-03-01' = {
       containers: [
         {
           name: 'frontend'
-          image: imageName//'eshopdapr/blazor.client:20220331'
+          image: imageName
           env: [
             {
               name: 'ASPNETCORE_ENVIRONMENT'
@@ -54,6 +58,10 @@ resource web 'Microsoft.App/containerApps@2022-03-01' = {
             {
               name: 'ASPNETCORE_URLS'
               value: 'http://0.0.0.0:80'
+            }
+            {
+              name: 'backendUrl'
+              value: 'https://${api.properties.configuration.ingress.fqdn}'
             }
             {
               name: 'Web_APP_APPINSIGHTS_INSTRUMENTATIONKEY'

@@ -112,6 +112,7 @@ module frontend 'modules/apps/frontend.bicep' = {
     containerRegistry
     appInsightsResources
     keyVault
+    backend
   ]
   params: {
     name:name
