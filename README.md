@@ -1,0 +1,1 @@
+## Sample to deploy microservices on ACA using Azure Developer CLI

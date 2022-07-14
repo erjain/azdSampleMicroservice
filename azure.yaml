@@ -1,0 +1,12 @@
+name: azdSampleMicroservice
+metadata:
+  template: azdSampleMicroservice@0.0.1-beta
+services:
+  backend:
+    project: \Backend
+    language: csharp
+    host: containerapp
+  frontend:
+    project: \frontend
+    language: csharp
+    host: containerapp
