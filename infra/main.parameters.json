@@ -12,10 +12,10 @@
       "value": "${AZURE_PRINCIPAL_ID}"
     },
     "backendImageName": {
-      "value": "${BACKEND_IMAGE_NAME}"
+      "value": "${SERVICE_API_IMAGE_NAME}"
     },
     "frontendImageName": {
-      "value": "${FRONTEND_IMAGE_NAME}"
+      "value": "${SERVICE_WEB_IMAGE_NAME}"
     }
   }
 }

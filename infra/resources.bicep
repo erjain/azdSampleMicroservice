@@ -6,9 +6,36 @@ param tags object
 param backendImageName string = ''
 param frontendImageName string = ''
 
-param uniqueSeed string = name
 
+resource logAnalyticsWorkspace 'Microsoft.OperationalInsights/workspaces@2021-06-01' = {
+  name: 'log-${resourceToken}'
+  location: location
+  tags: tags
+  properties: any({
+    retentionInDays: 30
+    features: {
+      searchVersion: 1
+    }
+    sku: {
+      name: 'PerGB2018'
+    }
+  })
+}
 
+resource containerAppsEnvironment 'Microsoft.App/managedEnvironments@2022-03-01' = {
+  name: 'cae-${resourceToken}'
+  location: location
+  tags: tags
+  properties: {
+    appLogsConfiguration: {
+      destination: 'log-analytics'
+      logAnalyticsConfiguration: {
+        customerId: logAnalyticsWorkspace.properties.customerId
+        sharedKey: logAnalyticsWorkspace.listKeys().primarySharedKey
+      }
+    }
+  }
+}
 
 resource containerRegistry 'Microsoft.ContainerRegistry/registries@2021-12-01-preview' = {
   name: 'contreg${resourceToken}'
@@ -73,23 +100,10 @@ module appInsightsResources './appinsights.bicep' = {
 }
 
 ////////////////////////////////////////////////////////////////////////////////
-// Infrastructure
-////////////////////////////////////////////////////////////////////////////////
-
-module containerAppsEnvironment 'modules/infra/container-apps-env.bicep' = {
-  name: 'cae-${resourceToken}'
-  params: {
-    location: location
-    uniqueSeed: uniqueSeed
-  }
-}
-
-
-////////////////////////////////////////////////////////////////////////////////
 // Container apps
 ////////////////////////////////////////////////////////////////////////////////
 
-module backend 'modules/apps/backend.bicep' = {
+module backend './backend.bicep' = {
   name: '${deployment().name}-app-backend'
   dependsOn: [
     containerAppsEnvironment
@@ -100,12 +114,10 @@ module backend 'modules/apps/backend.bicep' = {
   params: {
     name:name
     location: location
-    containerAppsEnvironmentId: containerAppsEnvironment.outputs.id
-    containerAppsEnvironmentDomain: containerAppsEnvironment.outputs.domain
     imageName: backendImageName != '' ? backendImageName : 'nginx:latest'
   }
 }
-module frontend 'modules/apps/frontend.bicep' = {
+module frontend './frontend.bicep' = {
   name: '${deployment().name}-app-frontend'
   dependsOn: [
     containerAppsEnvironment
@@ -117,8 +129,6 @@ module frontend 'modules/apps/frontend.bicep' = {
   params: {
     name:name
     location: location
-    containerAppsEnvironmentId: containerAppsEnvironment.outputs.id
-    containerAppsEnvironmentDomain: containerAppsEnvironment.outputs.domain
     imageName: frontendImageName != '' ? frontendImageName : 'nginx:latest'
   }
 }

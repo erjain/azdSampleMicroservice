@@ -3,10 +3,10 @@ metadata:
   template: azdSampleMicroservice@0.0.1-beta
 services:
   backend:
-    project: \Backend
+    project: src/backend
     language: csharp
     host: containerapp
   frontend:
-    project: \frontend
+    project: src/frontend
     language: csharp
     host: containerapp

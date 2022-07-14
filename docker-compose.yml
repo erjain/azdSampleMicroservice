@@ -5,8 +5,8 @@ services:
   frontend:
     image: pizzafrontend
     build:
-      context: frontend
-      dockerfile: Dockerfile
+      context: src/frontend
+      dockerfile: ./Dockerfile
     environment: 
       - backendUrl=http://backend
     ports:
@@ -16,7 +16,7 @@ services:
   backend:
     image: pizzabackend
     build: 
-      context: .
-      dockerfile: backend/Dockerfile
+      context: src/backend
+      dockerfile: ./Dockerfile
     ports: 
       - "5000:80"

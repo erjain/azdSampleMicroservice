@@ -26,24 +26,26 @@ resource keyVault 'Microsoft.KeyVault/vaults@2019-09-01' existing = {
   name: 'keyvault${resourceToken}'
 }
 
-param containerAppsEnvironmentId string
-param containerAppsEnvironmentDomain string
-
-resource backendapi 'Microsoft.App/containerApps@2022-03-01' = {
+resource api 'Microsoft.App/containerApps@2022-03-01' existing = {
   name: 'backend-api-${resourceToken}'
+}
+
+
+resource web 'Microsoft.App/containerApps@2022-03-01' = {
+  name: 'frontend-${resourceToken}'
   location: location
   tags: union(tags, {
-    'azd-service-name': 'backendapi'
+      'azd-service-name': 'web'
     })
   identity: {
     type: 'SystemAssigned'
   }
   properties: {
-    managedEnvironmentId: containerAppsEnvironmentId
+    managedEnvironmentId: containerAppsEnvironment.id
     template: {
       containers: [
         {
-          name: 'backend-api'
+          name: 'frontend'
           image: imageName
           env: [
             {
@@ -55,7 +57,11 @@ resource backendapi 'Microsoft.App/containerApps@2022-03-01' = {
               value: 'http://0.0.0.0:80'
             }
             {
-              name: 'APPINSIGHTS_INSTRUMENTATIONKEY'
+              name: 'backendUrl'
+              value: 'https://${api.properties.configuration.ingress.fqdn}'
+            }
+            {
+              name: 'Web_APP_APPINSIGHTS_INSTRUMENTATIONKEY'
               value: appInsights.properties.InstrumentationKey
             }
             {
@@ -72,15 +78,9 @@ resource backendapi 'Microsoft.App/containerApps@2022-03-01' = {
     }
     configuration: {
       activeRevisionsMode: 'single'
-      dapr: {
-        enabled: true
-        appId: 'backend-api'
-        appPort: 80
-      }
       ingress: {
-        external: false
+        external: true
         targetPort: 80
-        allowInsecure: true
       }
       secrets: [
         {
@@ -99,22 +99,4 @@ resource backendapi 'Microsoft.App/containerApps@2022-03-01' = {
   }
 }
 
-resource keyVaultAccessPolicies 'Microsoft.KeyVault/vaults/accessPolicies@2021-11-01-preview' = {
-  name: '${keyVault.name}/add'
-  properties: {
-    accessPolicies: [
-      {
-        objectId: backendapi.identity.principalId
-        permissions: {
-          secrets: [
-            'get'
-            'list'
-          ]
-        }
-        tenantId: subscription().tenantId
-      }
-    ]
-  }
-}
-
-output API_URI string = 'https://${backendapi.properties.configuration.ingress.fqdn}'
+output WEB_URI string = 'https://${web.properties.configuration.ingress.fqdn}'
