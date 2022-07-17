@@ -6,15 +6,13 @@ services:
     project: src/backend
     language: csharp
     host: containerapp
-    options:
-      docker:
-        path: ./Dockerfile
-        context: ../
+    docker:
+      path: ./Dockerfile
+      context: ../
   frontend:
     project: src/frontend
     language: csharp
     host: containerapp
-    options:
-      docker:
-        path: ./Dockerfile
-        context: ../
+    docker:
+      path: ./Dockerfile
+      context: ../
